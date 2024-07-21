@@ -1,61 +1,50 @@
-import { useState } from 'react';
-import axios from "axios";
-import './App.css';
+import React from 'react';
+import './App.css'; // Importa estilos si es necesario
 
-function App() {
-  const [fileUrl, setFileUrl] = useState(""); // Estado para la URL del archivo cargado
-  const [error, setError] = useState(""); // Estado para manejar errores
+// Importa el archivo JSON
+import data from '../public/listado/LISTA.json'; // Ajusta la ruta según la ubicación real
 
-  const changeUploadFile = async (e) => {
-    const file = e.target.files[0];
-    const data = new FormData(); 
+const App = () => {
+  // Extrae la lista de manuales del archivo JSON
+  const manuales = data.Manual;
 
-    data.append("file", file);
-    data.append("upload_preset", "Presents_react");
-
-    try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/df1umiwd8/raw/upload", // Usamos 'raw' para archivos que no son imágenes
-        data,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      );
-      console.log(response.data);
-      setFileUrl(response.data.secure_url);
-      setError(""); // Reiniciar el error si hubo uno previamente
-    } catch (error) {
-      console.error('Error uploading file: ', error);
-      setError("Error al subir el archivo. Por favor, intenta nuevamente."); // Manejar error de carga del archivo
-    }
-  };
-
-  const deleteFile = () => {
-    setFileUrl("");
+  const handleClick = (link) => {
+    // Aquí redirigimos a la URL especificada en el enlace del documento
+    window.location.href = link;
   };
 
   return (
-    <>
-      <h1>SELECCIONA UN ARCHIVO</h1>  
-      <div>
-        <input type="file" accept="image/*, application/pdf, .doc, .docx, .xls, .xlsx" onChange={changeUploadFile}/> 
-
-        {fileUrl && (
-          <div>
-            {fileUrl.includes('pdf') ? ( // Verifica si la URL es de un PDF para mostrarlo correctamente
-              <embed src={fileUrl} type="application/pdf" width="500" height="600"/>
-            ) : (
-              <a href={fileUrl} target="_blank" rel="noopener noreferrer">Ver archivo</a>
-            )}
-            <button onClick={deleteFile}>Eliminar Archivo</button>
-          </div>
-        )}
-
-        {error && <p>{error}</p>}
-      </div>
-    </>
+    <div className="App">
+      <h1>Lista de Manuales</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Proceso</th>
+            <th>Tipo</th>
+            <th>Código</th>
+            <th>Nombre del documento</th>
+            <th>Acciones</th> {/* Nueva columna para el botón */}
+          </tr>
+        </thead>
+        <tbody>
+          {manuales.map((manual, index) => (
+            <tr key={index}>
+              <td>{manual["N°"]}</td>
+              <td>{manual["Proceso"]}</td>
+              <td>{manual["Tipo"]}</td>
+              <td>{manual["Código"]}</td>
+              <td>{manual["Nombre del docuemento"]}</td>
+              <td>
+                <button onClick={() => handleClick(manual["LINK"])}>
+                  Upload
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
