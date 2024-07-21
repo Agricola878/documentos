@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'; // Importa estilos si es necesario
 
 // Importa el archivo JSON
-import data from '../public/listado/LISTA.json'; // Ajusta la ruta según la ubicación real
+import data from '/LISTA.json'; // Ajusta la ruta según la ubicación real
 
 const App = () => {
   // Extrae la lista de manuales del archivo JSON
