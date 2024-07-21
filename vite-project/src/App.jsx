@@ -3,9 +3,10 @@ import axios from "axios";
 import './App.css';
 
 function App() {
-  const [Url_Imagen, setUrl_Imagen] = useState("");
+  const [fileUrl, setFileUrl] = useState(""); // Estado para la URL del archivo cargado
+  const [error, setError] = useState(""); // Estado para manejar errores
 
-  const chageUploadImage = async (e) => {
+  const changeUploadFile = async (e) => {
     const file = e.target.files[0];
     const data = new FormData(); 
 
@@ -14,33 +15,45 @@ function App() {
 
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/df1umiwd8/image/upload", data);
+        "https://api.cloudinary.com/v1_1/df1umiwd8/raw/upload", // Usamos 'raw' para archivos que no son imágenes
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      );
       console.log(response.data);
-      setUrl_Imagen(response.data.secure_url);
+      setFileUrl(response.data.secure_url);
+      setError(""); // Reiniciar el error si hubo uno previamente
     } catch (error) {
-      console.error('Error uploading image: ', error);
-      // Aquí podrías manejar el error de carga de la imagen, por ejemplo, mostrar un mensaje al usuario.
+      console.error('Error uploading file: ', error);
+      setError("Error al subir el archivo. Por favor, intenta nuevamente."); // Manejar error de carga del archivo
     }
   };
 
-
-  const FuncionDeleteImage = ( ) => {
-
-    setUrl_Imagen (" ")
-  }
+  const deleteFile = () => {
+    setFileUrl("");
+  };
 
   return (
     <>
-      <h1>SELECCIONA LA IMAGEN</h1>  
+      <h1>SELECCIONA UN ARCHIVO</h1>  
       <div>
-        <input type="file"  onChange={chageUploadImage}/> 
+        <input type="file" accept="image/*, application/pdf, .doc, .docx, .xls, .xlsx" onChange={changeUploadFile}/> 
 
-        {Url_Imagen && ( 
+        {fileUrl && (
           <div>
-            <img src={Url_Imagen} alt="Imagen subida"/>
-            <button onClick={()=> FuncionDeleteImage()}>Eliminar Imagen</button>
+            {fileUrl.includes('pdf') ? ( // Verifica si la URL es de un PDF para mostrarlo correctamente
+              <embed src={fileUrl} type="application/pdf" width="500" height="600"/>
+            ) : (
+              <a href={fileUrl} target="_blank" rel="noopener noreferrer">Ver archivo</a>
+            )}
+            <button onClick={deleteFile}>Eliminar Archivo</button>
           </div>
-        )} 
+        )}
+
+        {error && <p>{error}</p>}
       </div>
     </>
   );
