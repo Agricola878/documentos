@@ -16,14 +16,17 @@ const App = () => {
   return (
     <div className="App">
       <h1>Lista de Manuales</h1>
-      <table>
+
+      <table className='tabla'>
         <thead>
           <tr>
             <th>N°</th>
             <th>Proceso</th>
             <th>Tipo</th>
             <th>Código</th>
-            <th>Nombre del documento</th>
+            
+            <th><span> </span>Nombre del documento</th>
+            
             <th>Acciones</th> {/* Nueva columna para el botón */}
           </tr>
         </thead>
@@ -37,7 +40,7 @@ const App = () => {
               <td>{manual["Nombre del docuemento"]}</td>
               <td>
                 <button onClick={() => handleClick(manual["LINK"])}>
-                  Upload
+                  Download
                 </button>
               </td>
             </tr>
