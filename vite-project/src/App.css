@@ -2,6 +2,7 @@ html {
 	box-sizing: border-box;
     font-size: 62.5%;  /*1 REM igual a 10px */
     
+    
 }
 *, *:before, *:after {
 	box-sizing: inherit;
@@ -13,7 +14,7 @@ body{
     font-family: 'Raleway', sans-serif;
     font-size: 3 rem;
     line-height: 2;
-    background: rgb(245, 243, 243);
+   
 
 }
 
@@ -49,4 +50,13 @@ table {
   .tabla {
 
     font-size: medium;
+  }
+  .barradebusqueda {
+
+    background-color: #b8d4f1;
+    border-radius: 2rem;
+    margin: 1rem;
+    padding: 1.5rem;
+    width: 25%;
+
   }

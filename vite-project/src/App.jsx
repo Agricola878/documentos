@@ -33,11 +33,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Lista de Manuales</h1>
+      <h1>Lista de Documentos Agricola San Andres</h1>
 
       {/* Barra de búsqueda por código */}
       <input
         type="text"
+        className='barradebusqueda'
         placeholder="Buscar por código..."
         value={searchTerm}
         onChange={handleSearchChange}
@@ -62,7 +63,7 @@ const App = () => {
               <td>{manual["Proceso"]}</td>
               <td>{manual["Tipo"]}</td>
               <td>{manual["Código"]}</td>
-              <td>{manual["Nombre del documento"]}</td>
+              <td>{manual["Nombre del docuemento"]}</td>
               <td>
                 <button onClick={() => handleClick(manual["LINK"])}>
                   Download
