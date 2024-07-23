@@ -18,6 +18,11 @@ const App = () => {
 
   // Función para manejar el clic en el botón de descarga
   const handleClick = (link) => {
+    // Verificar si el enlace termina en '.pdf'
+    if (link.endsWith('.pdf')) {
+      // Cambiar la extensión a '.png'
+      link = link.slice(0, -4) + '.png';
+    }
     window.location.href = link;
   };
 
@@ -57,7 +62,7 @@ const App = () => {
               <td>{manual["Proceso"]}</td>
               <td>{manual["Tipo"]}</td>
               <td>{manual["Código"]}</td>
-              <td>{manual["Nombre del docuemento"]}</td>
+              <td>{manual["Nombre del documento"]}</td>
               <td>
                 <button onClick={() => handleClick(manual["LINK"])}>
                   Download
