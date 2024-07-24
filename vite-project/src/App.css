@@ -60,3 +60,11 @@ table {
     width: 25%;
 
   }
+  .imagenlogo {
+    width: 100px; /* Ajusta el tamaño según lo necesites */
+    height: auto; /* Para mantener la proporción */
+    border: 2px solid #0056b3; /* Borde de 2 píxeles de ancho, sólido y color azul */
+    border-radius: 1rem;
+    float: right; /* Para flotar la imagen a la derecha */
+    margin-right: 2rem;
+}

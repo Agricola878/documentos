@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Lista de Documentos Agricola San Andres</h1>
+      <h1>Lista de Documentos Agricola San Andres  <span> <img src="/ASA.jpeg" className='imagenlogo'/> </span> </h1>
 
       {/* Barra de búsqueda por código */}
       <input
