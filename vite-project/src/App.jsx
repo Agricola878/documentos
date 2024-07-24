@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Lista de Documentos Agricola San Andres  <span> <img src="/dist/asa.svg" className='imagenlogo'/> </span> </h1>
+      <h1>Lista de Documentos Agricola San Andres  <span> <img src="https://res.cloudinary.com/df1umiwd8/image/upload/v1721780382/ASA_pry8vq.jpg" className='imagenlogo'/> </span> </h1>
 
       {/* Barra de búsqueda por código */}
       <input
