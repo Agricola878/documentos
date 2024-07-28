@@ -53,6 +53,9 @@ const App = () => {
             <th>Tipo</th>
             <th>Código</th>
             <th>Nombre del documento</th>
+            <th>Vigente Desde</th>
+            <th>Vigente Hasta</th>
+            <th>Rev Vigente</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -64,6 +67,9 @@ const App = () => {
               <td>{manual["Tipo"]}</td>
               <td>{manual["Código"]}</td>
               <td>{manual["Nombre del docuemento"]}</td>
+              <td className='vigente'>{manual["Vigente desde"]}</td> 
+              <td>{manual["Vigente hasta"]}</td>  
+              <td>{manual["Rev\nVigente"]}</td>
               <td>
                 <button onClick={() => handleClick(manual["LINK"])}>
                   Download

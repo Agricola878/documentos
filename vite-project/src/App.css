@@ -18,19 +18,34 @@ body{
 
 }
 
-table {
+.tabla {
     width: 100%;
-    border-collapse: collapse; /* Para fusionar los bordes de las celdas */
+    border-collapse: collapse; /* Esto evita el doble borde entre celdas */
   }
   
-  th, td {
-    border: 1px solid #ddd; /* Añade bordes a las celdas */
-    padding: 8px; /* Ajusta el espacio interno de las celdas */
-    text-align: left; /* Alinea el texto a la izquierda */
+  .tabla th, .tabla td {
+    border: 1px solid #ddd; /* Color de borde gris claro */
+    padding: 8px; /* Espaciado interno en celdas */
+    text-align: left; /* Alineación del texto */
   }
   
-  th {
-    background-color: #f2f2f2; /* Color de fondo para las celdas de encabezado */
+
+  .tabla th {
+    background-color: #f4f4f4; /* Color de fondo para encabezados */
+  }
+  
+  .tabla td {
+    white-space: nowrap; /* Esto evita el ajuste automático del texto en celdas */
+  }
+  
+  .tabla td {
+    text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
+    overflow: hidden; /* Oculta el desbordamiento de texto */
+  }
+
+  .vigente {
+    width: 70px; /* Ajusta este valor según tus necesidades */
+    max-width: 100px; /* Opcional: Define un ancho máximo para evitar que sea demasiado grande */
   }
   
   button {
@@ -41,16 +56,15 @@ table {
     cursor: pointer;
     border-radius: 3px;
   }
+
+
   
   button:hover {
     background-color: #0056b3;
     color: white;
   }
 
-  .tabla {
-
-    font-size: medium;
-  }
+  
   .barradebusqueda {
 
     background-color: #b8d4f1;
