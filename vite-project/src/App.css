@@ -44,8 +44,8 @@ body{
   }
 
   .vigente {
-    width: 70px; /* Ajusta este valor según tus necesidades */
-    max-width: 100px; /* Opcional: Define un ancho máximo para evitar que sea demasiado grande */
+    width: 80px; /* Ajusta este valor según tus necesidades */
+    max-width: 120px; /* Opcional: Define un ancho máximo para evitar que sea demasiado grande */
   }
   
   button {
