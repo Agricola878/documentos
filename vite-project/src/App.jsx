@@ -26,10 +26,11 @@ const App = () => {
     window.location.href = link;
   };
 
-  // Filtrar manuales según el término de búsqueda por código
-  const filteredManuales = manuales.filter((manual) =>
-    manual["Código"].toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filtrar manuales según el término de búsqueda por código y tipo 'Formato'
+  const filteredManuales = manuales
+    .filter((manual) =>
+      manual["Tipo"] === 'Formato' && manual["Código"].toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   return (
     <div className="App">
